@@ -19,6 +19,22 @@ const server = http.createServer((req, res)=> {
             res.end(content, 'utf-8');
         })
     }
+       else if(req.url == "/img") {
+        fs.readFile(path.join(__dirname, 'public', 'ramya_image.jpg'), 
+        (err, content)=> {
+            if(err) throw err;
+            res.writeHead(200, {'Content-Type': 'image/jpg'}); 
+            res.end(content, 'utf-8');
+        })
+    }
+    else if(req.url == "/notfoundimg") {
+        fs.readFile(path.join(__dirname, 'public', '404.jpeg'), 
+        (err, content)=> {
+            if(err) throw err;
+            res.writeHead(200, {'Content-Type': 'image/jpg'}); 
+            res.end(content, 'utf-8');
+        })
+    }
     else if (req.url == "/api") {
     
         async function main(){
